@@ -1,0 +1,16 @@
+table
+  thead
+    tr
+      th = Employee.human_attribute_name :firstname
+      th = Employee.human_attribute_name :lastname
+      th = Employee.human_attribute_name :email
+      th = Employee.human_attribute_name :birthday
+  tbody
+    - @employees.each do |employee|
+      tr
+        td = employee.firstname
+        td = employee.lastname
+        td = employee.email
+        td = I18n.l(employee.birthday)
+
+= link_to "Neuer Mitarbeiter", new_employee_path
