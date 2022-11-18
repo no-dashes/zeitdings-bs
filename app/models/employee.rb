@@ -7,4 +7,8 @@ class Employee < ApplicationRecord
 
   belongs_to :office, optional: true
 
+  def name
+    "#{firstname} #{lastname}"
+  end
+
 end

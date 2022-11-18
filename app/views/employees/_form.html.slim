@@ -1,0 +1,8 @@
+= simple_form_for @employee do |f|
+  = f.input :firstname
+  = f.input :lastname
+  = f.input :email
+  = f.input :birthday, disabled: disable_birthday
+  hr
+  = f.submit btn_label, class: 'btn btn-primary'
+  a< href=employees_path « zurück

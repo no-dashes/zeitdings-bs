@@ -7,7 +7,6 @@ class EmployeesController < ApplicationController
   end
 
   def create()
-    employee_params = params.require(:employee).permit(:firstname, :lastname, :email, :birthday)
     @employee = Employee.new(employee_params)
     if @employee.valid?
       @employee.save!
@@ -22,18 +21,33 @@ class EmployeesController < ApplicationController
   end
 
   def edit()
+    @employee = Employee.find(params[:id])
   end
 
   def show()
+    @employee = Employee.find(params[:id])
   end
 
   def update()
-  end
-
-  def update()
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      flash[:success] = "#{@employee.name} geändert."
+      return redirect_to employees_path
+    else
+      flash[:danger] = "#{@employee.name} nicht geändert."
+      return redirect_to employees_path
+      # render 'edit'
+    end
   end
 
   def destroy()
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    flash[:success] = "#{@employee.name} gelöscht."
+    redirect_to employees_path
   end
 
+  private def employee_params
+    params.require(:employee).permit(:firstname, :lastname, :email, :birthday)
+  end
 end

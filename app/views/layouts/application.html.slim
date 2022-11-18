@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title ZeitdingsBs
+    meta content="width=device-width,initial-scale=1" name="viewport" /
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  body
+    - flash.each do |key, val|
+      - if !%w[danger success info primary ...].member?(key.to_s)
+        - raise "komischer key! #{key}"
+      .alert class="alert-#{key}" = val
+
+    = yield

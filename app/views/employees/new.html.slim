@@ -1,22 +1,26 @@
 h1 Neuer Mitarbeiter
 
-- if !@employee.valid?
-  b Kaputt!
-  ul
-    - @employee.errors.full_messages.each do |m|
-      li = m
+= render 'form', btn_label: 'Anlegen', disable_birthday: false
 
-form action='/employees' method="post"
-  label Firstname
-  input type="string" name="employee[firstname]" value=@employee.firstname
-  hr
-  label Lastname
-  input type="string" name="employee[lastname]" value=@employee.lastname
-  hr
-  label Email
-  input type="string" name="employee[email]" value=@employee.email
-  hr
-  label Birthday
-  input type="string" name="employee[birthday]" value=@employee.birthday
-  hr
-  button type="submit" Absenden
+
+/ weg
+  - if !@employee.valid?
+    b Kaputt!
+    ul
+      - @employee.errors.full_messages.each do |m|
+        li = m
+
+  form action='/employees' method="post"
+    label Firstname
+    input type="string" name="employee[firstname]" value=@employee.firstname
+    hr
+    label Lastname
+    input type="string" name="employee[lastname]" value=@employee.lastname
+    hr
+    label Email
+    input type="string" name="employee[email]" value=@employee.email
+    hr
+    label Birthday
+    input type="string" name="employee[birthday]" value=@employee.birthday
+    hr
+    button type="submit" Absenden

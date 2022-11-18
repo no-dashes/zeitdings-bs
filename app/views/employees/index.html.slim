@@ -1,10 +1,13 @@
-table
+h1 Alle Mitarbeiter
+
+table.table.table-striped.table-sm
   thead
     tr
       th = Employee.human_attribute_name :firstname
       th = Employee.human_attribute_name :lastname
       th = Employee.human_attribute_name :email
       th = Employee.human_attribute_name :birthday
+      th
   tbody
     - @employees.each do |employee|
       tr
@@ -12,5 +15,10 @@ table
         td = employee.lastname
         td = employee.email
         td = I18n.l(employee.birthday)
+        th
+          a> href=edit_employee_path(employee) bearbeiten
+          a> href=employee_path(employee) anzeigen
+          a.text-danger> href=employee_path(employee) data-method="delete" data-confirm="Wirklich löschen?"
+            | löschen
 
 = link_to "Neuer Mitarbeiter", new_employee_path
