@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_10_141256) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_144311) do
+  create_table "comments", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "commentable_id"
+    t.string "commentable_type"
+  end
+
+  create_table "employee_tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employee_tags_employees", id: false, force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "employee_tag_id"
+    t.index ["employee_id"], name: "index_employee_tags_employees_on_employee_id"
+    t.index ["employee_tag_id"], name: "index_employee_tags_employees_on_employee_tag_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"

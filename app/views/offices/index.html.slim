@@ -1,0 +1,22 @@
+h1 Alle Büros
+
+table.table.table-striped.table-sm
+  thead
+    tr
+      th = Office.human_attribute_name :building
+      th = Office.human_attribute_name :floor
+      th = Office.human_attribute_name :number
+      th
+  tbody
+    - @offices.each do |office|
+      tr
+        td = office.building
+        td = office.floor
+        td = office.number
+        th
+          a> href=edit_office_path(office) bearbeiten
+          a> href=office_path(office) anzeigen
+          a.text-danger> href=office_path(office) data-method="delete" data-confirm="Wirklich löschen?"
+            | löschen
+
+= link_to "Neues Büro", new_office_path

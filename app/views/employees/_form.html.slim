@@ -3,6 +3,8 @@
   = f.input :lastname
   = f.input :email
   = f.input :birthday, disabled: disable_birthday
+  = f.association :office, label_method: :name
+  = f.association :employee_tags, as: :check_boxes
   hr
   = f.submit btn_label, class: 'btn btn-primary'
   a< href=employees_path « zurück

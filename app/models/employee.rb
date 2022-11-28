@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
     format: { with: /\A\w+@(\w+.)+\w+\Z/ }
 
   belongs_to :office, optional: true
+  has_and_belongs_to_many :employee_tags
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def name
     "#{firstname} #{lastname}"

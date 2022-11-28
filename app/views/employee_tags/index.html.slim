@@ -1,0 +1,22 @@
+h1 Alle Tags
+
+table.table.table-striped.table-sm
+  thead
+    tr
+      th = EmployeeTag.human_attribute_name :title
+      th MitarbeiterInnen
+      th
+  tbody
+    - @employee_tags.each do |employee_tag|
+      tr
+        td = employee_tag.title
+        td
+          - employee_tag.employees.each do |employee|
+            = employee.name
+        th
+          a> href=edit_employee_tag_path(employee_tag) bearbeiten
+          a> href=employee_tag_path(employee_tag) anzeigen
+          a.text-danger> href=employee_tag_path(employee_tag) data-method="delete" data-confirm="Wirklich löschen?"
+            | löschen
+
+= link_to "Neues Tag", new_employee_tag_path

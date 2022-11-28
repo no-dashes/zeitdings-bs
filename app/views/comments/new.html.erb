@@ -1,0 +1,9 @@
+<h1>New comment for <%= @thing.name %> (<%= @thing.class %>)</h1>
+
+<%= render "form", comment: @comment %>
+
+<br>
+
+<div>
+  <%= link_to "Back to comments", comments_path %>
+</div>

@@ -10,8 +10,16 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
   body
     - flash.each do |key, val|
-      - if !%w[danger success info primary ...].member?(key.to_s)
+      - if !%w[danger success info primary notice ...].member?(key.to_s)
         - raise "komischer key! #{key}"
       .alert class="alert-#{key}" = val
 
     = yield
+
+    hr
+
+    => link_to "Mitarbeiter", employees_path
+    | ::
+    =<> link_to "Büros", offices_path
+    | ::
+    =<> link_to "Tags", employee_tags_path

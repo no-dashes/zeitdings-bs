@@ -7,6 +7,9 @@ table.table.table-striped.table-sm
       th = Employee.human_attribute_name :lastname
       th = Employee.human_attribute_name :email
       th = Employee.human_attribute_name :birthday
+      th Office
+      th Tags
+      th Kommentare
       th
   tbody
     - @employees.each do |employee|
@@ -15,10 +18,22 @@ table.table.table-striped.table-sm
         td = employee.lastname
         td = employee.email
         td = I18n.l(employee.birthday)
+        td
+          - if employee.office
+            = link_to employee.office.name, office_path(employee.office)
+          - else
+            | —
+        td
+          - employee.employee_tags.each do |tag|
+            .badge.bg-primary => tag.title
+        td
+          - employee.comments.each do |comment|
+            div => comment.text
         th
           a> href=edit_employee_path(employee) bearbeiten
           a> href=employee_path(employee) anzeigen
           a.text-danger> href=employee_path(employee) data-method="delete" data-confirm="Wirklich löschen?"
             | löschen
+          a> href=new_comment_path(commentable_id: employee.id, commentable_type: employee.class) kommentieren
 
 = link_to "Neuer Mitarbeiter", new_employee_path
