@@ -1,15 +1,15 @@
-h1 Alle Mitarbeiter
+h1 = t('.all_employees')
 
 table.table.table-striped.table-sm
   thead
     tr
-      th = Employee.human_attribute_name :firstname
-      th = Employee.human_attribute_name :lastname
-      th = Employee.human_attribute_name :email
-      th = Employee.human_attribute_name :birthday
-      th Office
-      th Tags
-      th Kommentare
+      th = t('.table_header.employee_firstname')
+      th = t('.table_header.employee_lastname')
+      th = t('.table_header.employee_email')
+      th = t('.table_header.employee_birthday')
+      th = t('.table_header.employee_office')
+      th = t('.table_header.employee_tags')
+      th = t('.table_header.employee_comments')
       th
   tbody
     - @employees.each do |employee|
@@ -34,6 +34,6 @@ table.table.table-striped.table-sm
           a> href=employee_path(employee) anzeigen
           a.text-danger> href=employee_path(employee) data-method="delete" data-confirm="Wirklich löschen?"
             | löschen
-          a> href=new_comment_path(commentable_id: employee.id, commentable_type: employee.class) kommentieren
+          / a> href=new_comment_path(commentable_id: employee.id, commentable_type: employee.class) kommentieren
 
 = link_to "Neuer Mitarbeiter", new_employee_path

@@ -9,4 +9,11 @@ class DashboardController < ApplicationController
     @greeting = "Hallo zusammen!"
   end
 
+  def switch_locale
+    loc = params[:locale]
+    I18n.locale = loc
+    session[:locale] = loc
+    redirect_to root_path
+  end
+
 end

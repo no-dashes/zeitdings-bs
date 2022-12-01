@@ -23,3 +23,9 @@ html
     =<> link_to "Büros", offices_path
     | ::
     =<> link_to "Tags", employee_tags_path
+    - if I18n.locale != :de
+      | ::
+      =<> link_to '🇩🇪', switch_locale_path('de')
+    - if I18n.locale != :en
+      | ::
+      =<> link_to '🇺🇸', switch_locale_path('en')

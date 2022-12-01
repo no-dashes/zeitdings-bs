@@ -35,8 +35,8 @@ class EmployeesController < ApplicationController
       return redirect_to employees_path
     else
       flash[:danger] = "#{@employee.name} nicht geändert."
-      return redirect_to employees_path
-      # render 'edit'
+      # return redirect_to employees_path
+      render 'edit'
     end
   end
 

@@ -1,0 +1,14 @@
+- comments = thing.comments.order(created_at: :desc)
+.list-group
+  .list-group-item
+    = simple_form_for [thing, Comment.new] do |f|
+      = f.input :text
+      button.btn.btn-primary type="submit"
+        | Kommentieren
+  - comments.each do |comment|
+    .list-group-item
+      .small = nicetime comment.created_at
+      = comment.text
+  - if comments.blank?
+    .list-group-item
+      .alert.alert-info Keine Kommentare

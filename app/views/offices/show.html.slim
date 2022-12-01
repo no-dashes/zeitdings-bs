@@ -1,8 +1,12 @@
 h1 Raum #{@office.name}
 
-p Hier wohnen #{@office.employees.count} MitarbeiterInnen
+.row
+  .col
+    p Hier wohnen #{@office.employees.count} MitarbeiterInnen
 
-- if @office.employees.present?
-  ul
-    - @office.employees.each do |employee|
-      li = link_to employee.name, employee_path(employee)
+    - if @office.employees.present?
+      ul
+        - @office.employees.each do |employee|
+          li = link_to employee.name, employee_path(employee)
+  .col
+     = render '/comments/comments', thing: @office

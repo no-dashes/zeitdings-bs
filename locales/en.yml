@@ -1,0 +1,41 @@
+en:
+  hello: "Hello world"
+  dashboard:
+    index:
+      welcome: Welcome!
+
+  employees:
+    edit:
+      edit_employee: Edit Employee »%{name}«
+    index:
+      all_employees: All Employees
+      table_header:
+        employee_firstname: Given Name
+        employee_lastname: Family Name
+        employee_email: e Mail
+        employee_birthday: DoB
+        employee_office: Where?
+        employee_tags: What?
+        employee_comments: Comments
+  activerecord:
+    attributes:
+      employee:
+        firstname: Given Name
+        lastname: Family Name
+        email: e Mail
+        birthday: DoB
+        office: Where?
+        tags: What?
+        comments: Comments
+  helpers:
+    nicetime:
+      seconds_ago: "%{seconds}s ago"
+      minutes_ago: "%{minutes}m ago"
+  simple_form:
+    labels:
+      user:
+        username: 'User name'
+        password: 'Password'
+    hints:
+      employee:
+        email: 'the company mail address'
