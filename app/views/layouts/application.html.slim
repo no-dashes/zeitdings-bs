@@ -29,3 +29,11 @@ html
     - if I18n.locale != :en
       | ::
       =<> link_to '🇺🇸', switch_locale_path('en')
+    | ::
+    - if current_user
+      | Angemeldet als #{current_user.name}
+      =< link_to 'abmelden', logout_path, method: :delete
+    - else
+      = link_to "anmelden", login_path
+
+

@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user
+    if session[:user_id]
+      @_current_user ||= User.find(session[:user_id])
+    else
+      nil
+    end
+  end
+  helper_method :current_user
+
 end

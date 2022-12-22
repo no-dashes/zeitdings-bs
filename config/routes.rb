@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :offices do
     resources :comments, only: [:create]
   end
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
   get 'locale/:locale' => "dashboard#switch_locale", as: 'switch_locale'
+  get 'say_something' => 'dashboard#say_something'
   root "dashboard#index"
 end
