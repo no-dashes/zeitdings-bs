@@ -3,5 +3,7 @@
 // import "./controllers"
 // import * as bootstrap from "bootstrap"
 import Rails from '@rails/ujs';
-
+import DynamicTime from './dynamic_time';
 Rails.start();
+DynamicTime.init();
+
