@@ -19,4 +19,6 @@ table.table.table-striped.table-sm
           a.text-danger> href=office_path(office) data-method="delete" data-confirm="Wirklich löschen?"
             | löschen
 
+p Es gibt #{Office.count} Büros!
+
 = link_to "Neues Büro", new_office_path
