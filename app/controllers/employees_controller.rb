@@ -1,9 +1,10 @@
 class EmployeesController < ApplicationController
+  include PaginateConcern
 
   skip_before_action :verify_authenticity_token
 
   def index()
-    @employees = Employee.all
+    @employees = paginate Employee
   end
 
   def create()

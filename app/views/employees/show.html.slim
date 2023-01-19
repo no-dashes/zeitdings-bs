@@ -7,7 +7,9 @@ h1
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     p tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   .col
-     = render '/comments/comments', thing: @employee
+     turbo-frame#comments src=employee_comments_path(@employee)
+       | Bitte warten
+       / = render '/comments/comments', thing: @employee
 
 a.btn.btn-success> href=edit_employee_path(@employee)
   | Bearbeiten

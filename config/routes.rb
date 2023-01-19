@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   # resources :comments
   resources :employee_tags
   resources :employees do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :index]
   end
   resources :offices do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :index]
   end
 
   get 'login' => 'sessions#new'
