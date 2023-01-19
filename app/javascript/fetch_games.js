@@ -17,6 +17,7 @@ var FetchGames = {
   },
   init: function() {
     const fetchBtn = document.getElementById('fetchBtn');
+    if (!fetchBtn) return;
     fetchBtn.addEventListener('click', FetchGames.loadFromServer);
     const fetchJsonBtn = document.getElementById('fetchJsonBtn');
     fetchJsonBtn.addEventListener('click', FetchGames.loadJsonFromServer);
