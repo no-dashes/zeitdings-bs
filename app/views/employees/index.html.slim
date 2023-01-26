@@ -5,6 +5,7 @@ h1 = t('.all_employees')
 table.table.table-striped.table-sm
   thead
     tr
+      th
       th = t('.table_header.employee_firstname')
       th = t('.table_header.employee_lastname')
       th = t('.table_header.employee_email')
@@ -16,6 +17,9 @@ table.table.table-striped.table-sm
   tbody
     - @employees.each do |employee|
       tr
+        td
+          - if employee.avatar.present?
+            = image_tag employee.avatar.variant(:microthumb)
         td = employee.firstname
         td = employee.lastname
         td = employee.email

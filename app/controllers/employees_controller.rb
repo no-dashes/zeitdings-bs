@@ -1,8 +1,6 @@
 class EmployeesController < ApplicationController
   include PaginateConcern
 
-  skip_before_action :verify_authenticity_token
-
   def index()
     @employees = paginate Employee
   end
@@ -50,6 +48,6 @@ class EmployeesController < ApplicationController
 
   private def employee_params
     params.require(:employee).permit(:firstname, :lastname, :email,
-      :birthday, :office_id, employee_tag_ids: [])
+      :birthday, :office_id, :avatar, employee_tag_ids: [])
   end
 end
