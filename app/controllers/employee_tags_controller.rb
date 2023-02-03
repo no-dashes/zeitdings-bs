@@ -1,9 +1,11 @@
 class EmployeeTagsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def index()
-    @employee_tags = EmployeeTag.all
-  end
+  cruddify([:index], use_paginate: false)
+
+  # def index()
+  #   @employee_tags = EmployeeTag.all
+  # end
 
   def create()
     @employee_tag = EmployeeTag.new(employee_tag_params)

@@ -1,9 +1,11 @@
 class EmployeesController < ApplicationController
   include PaginateConcern
 
-  def index()
-    @employees = paginate Employee
-  end
+  cruddify([:index], use_paginate: true) # ::Index
+
+  # def index()
+  #   @employees = paginate Employee
+  # end
 
   def create()
     @employee = Employee.new(employee_params)
