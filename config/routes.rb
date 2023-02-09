@@ -8,6 +8,16 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :index]
   end
 
+  namespace :admin do
+    resources :houses
+
+    root "dashboard#index"
+  end
+
+  namespace :api, path: 'api/:api_version' do
+    resources :employees
+  end
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
